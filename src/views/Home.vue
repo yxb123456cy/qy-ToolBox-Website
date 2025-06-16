@@ -7,7 +7,13 @@ const router = useRouter();
  */
 const features = [
   {
-    title: '界面',
+    title: '工具箱',
+    description: '使用工具箱里提供的众多功能',
+    icon: 'tool',
+    route: '/toolbox'
+  },
+  {
+    title: '界面设置',
     description: '您可进行工具箱自定义界面设置',
     icon: 'settings',
     route: '/settings'
@@ -22,7 +28,7 @@ const features = [
         <h1 class="hero-title">qy-ToolBox-Website</h1>
         <p class="hero-subtitle">一款现代化、美观、好用的工具箱</p>
         <div class="hero-actions">
-          <a-button type="primary"   size="large" shape="round" @click="router.push('/connections')" status="success">
+          <a-button type="primary"   size="large" shape="round" @click="router.push('/toolbox')" status="success">
             开始使用
             <template #icon>
               <icon-right/>
@@ -45,10 +51,11 @@ const features = [
       <h2 class="section-title">主要功能</h2>
       <div class="feature-grid">
         <a-card v-for="(feature, index) in features" :key="index" class="feature-card"
-                :style="{ animationDelay: `${index * 0.1}s` }" hoverable @click="console.log(feature.route)">
+                :style="{ animationDelay: `${index * 0.1}s` }" hoverable @click="router.push(feature.route)">
           <template #cover>
             <div class="feature-icon">
               <icon-settings v-if="feature.icon === 'settings'"/>
+              <icon-tool v-if="feature.icon==='tool'"/>
             </div>
           </template>
           <a-card-meta>
@@ -63,7 +70,7 @@ const features = [
       <div class="cta-content">
         <h2 class="cta-title">准备好开始使用了吗？</h2>
         <p class="cta-description">立即体验qy-ToolBox-Website提供的众多工具</p>
-        <a-button type="primary" status="success" size="large" shape="round" @click="router.push('/connections')">
+        <a-button type="primary" status="success" size="large" shape="round" @click="router.push('/toolbox')">
           开始使用
           <template #icon>
             <icon-plus/>
@@ -77,18 +84,22 @@ const features = [
 <style scoped lang="less">
 .home-container {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 0;
-  gap: 40px;
+  padding: 80px 0;
+  gap: 60px;
 
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
+    padding: 40px 0;
   }
 }
 
@@ -97,7 +108,7 @@ const features = [
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 16px;
   background: linear-gradient(90deg, #eaffd0 0%, #95e1d3 100%);
@@ -188,6 +199,9 @@ const features = [
   transition: all 0.3s ease;
   animation: fadeInUp 0.5s ease forwards;
   opacity: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-10px);
@@ -233,11 +247,13 @@ const features = [
 
 .cta {
   margin-top: 60px;
-  padding: 60px 40px;
+  //padding: 60px 40px;
   background: linear-gradient(90deg, rgba(234, 255, 208, 0.85) 0%, rgba(149, 225, 211, 0.95) 100%);
   border-radius: 16px;
   text-align: center;
   position: relative;
+  margin-bottom: 5vh;
+  padding-bottom: 1.3vh;
   overflow: hidden;
 
   &::before {

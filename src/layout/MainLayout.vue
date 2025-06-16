@@ -40,7 +40,8 @@ const handleMenuClick = (key: string) => {
       >
         <a-menu-item key="/">首页</a-menu-item>
         <!--         todo 设置网站设置界面-->
-        <a-menu-item key="/settings">网站设置</a-menu-item>
+        <a-menu-item key="/toolbox">工具箱</a-menu-item>
+        <a-menu-item key="/settings">界面设置</a-menu-item>
       </a-menu>
       <div>
         <a-avatar
@@ -49,12 +50,12 @@ const handleMenuClick = (key: string) => {
       </div>
     </header>
     <main class="main-content">
-<!--      路由视图-->
+      <!--      路由视图-->
       <router-view/>
     </main>
-    <footer class="footer">
-      <p>© 2025 qy-toolBox-Website. All rights reserved.</p>
-    </footer>
+<!--    <footer class="footer" v-if="activeKey==='/'">-->
+<!--      <p>© 2025 qy-toolBox-Website. All rights reserved.</p>-->
+<!--    </footer>-->
   </div>
 </template>
 
@@ -64,7 +65,7 @@ const handleMenuClick = (key: string) => {
   flex-direction: column;
   min-height: 100vh;
   background-color: #1d2129;
-  color:#f7f8fa;
+  color: #f7f8fa;
 }
 
 .header {
@@ -76,6 +77,11 @@ const handleMenuClick = (key: string) => {
   background-color: #95e1d3;
   border-bottom: 1px solid #2a2a2a;
   box-shadow: 0 2px 4px rgba(149, 225, 211, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .logo-container {
@@ -94,7 +100,7 @@ const handleMenuClick = (key: string) => {
   font-size: 18px;
   font-weight: 600;
   margin: 0;
-  background: linear-gradient(90deg, #f7f8fa 0%,#1d2129 100%);
+  background: linear-gradient(90deg, #f7f8fa 0%, #1d2129 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -114,10 +120,10 @@ const handleMenuClick = (key: string) => {
 
 .main-content {
   flex: 1;
-  padding: 24px;
-  max-width: 1200px;
+  max-width: 100vw;
   width: 100%;
   margin: 0 auto;
+  padding-top: 64px; /* 添加与header高度相同的上边距 */
 }
 
 .footer {

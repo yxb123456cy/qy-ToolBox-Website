@@ -7,6 +7,18 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/Home.vue'),
         meta: {title: '首页'}
     },
+    {
+        path: '/settings',
+        name: 'Settings',
+        component: () => import('../views/Settings.vue'),
+        meta: {title: '界面设置'}
+    },
+    {
+        path: '/toolbox',
+        name: 'ToolBox',
+        component: () => import('../views/ToolBox.vue'),
+        meta: {title: '工具箱'}
+    },
 ];
 
 const router = createRouter({
