@@ -67,21 +67,24 @@ const onCollapse = (val: any, type: string) => {
       </div>
 <!--       工具卡片网格-->
       <div class="tools-grid">
-        <div
-          v-for="item in toolItems"
-          :key="item.id"
-          class="tool-card"
-          :class="{ 'active-tool-card': selectedToolId === item.id }"
-          @click="handleToolSelect(item.id)"
-        >
-          <div class="tool-icon">
-            <icon-tool />
+
+          <div
+              v-for="item in toolItems"
+              :key="item.id"
+              class="tool-card"
+              :class="{ 'active-tool-card': selectedToolId === item.id }"
+              @click="handleToolSelect(item.id)"
+          >
+            <div class="tool-icon">
+              <icon-tool />
+            </div>
+            <div class="tool-info">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
           </div>
-          <div class="tool-info">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-          </div>
-        </div>
+
+
       </div>
     </div>
 
@@ -255,5 +258,16 @@ const onCollapse = (val: any, type: string) => {
 :deep(.arco-menu-light .arco-menu-item.arco-menu-selected) {
   color: #00B42A;
   background-color: #272e3b;
+}
+
+
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
 }
 </style>

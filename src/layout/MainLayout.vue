@@ -50,8 +50,12 @@ const handleMenuClick = (key: string) => {
       </div>
     </header>
     <main class="main-content">
-      <!--      路由视图-->
-      <router-view/>
+<!--      使用transition组件包裹-->
+      <transition>
+        <!--      路由视图-->
+        <router-view/>
+      </transition>
+
     </main>
 <!--    <footer class="footer" v-if="activeKey==='/'">-->
 <!--      <p>© 2025 qy-toolBox-Website. All rights reserved.</p>-->
@@ -133,5 +137,17 @@ const handleMenuClick = (key: string) => {
   color: #f7f8fa;
   font-size: 18px;
   box-shadow: 0 2px 4px rgba(149, 225, 211, 0.75);
+}
+
+
+//transition组件过渡效果
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
